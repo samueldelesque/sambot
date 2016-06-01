@@ -90,7 +90,7 @@ class App extends React.Component{
     )
   }
 }
-let apiURL = ''
+let apiURL = 'http://samueldelesque.me:6020'
 try{ if(location.hostname.match('localhost')) apiURL = 'http://localhost:6020' }
 catch(e){ console.warn('invalid location.hostname', e)}
 

@@ -86,7 +86,7 @@ def getLocalContext(client_id):
 
 class Index(Resource):
     def get(self):
-        return {'status': 'ok'}
+        return {'status': 'ok', "test": "123"}
 
 class History(Resource):
     def get(self):
