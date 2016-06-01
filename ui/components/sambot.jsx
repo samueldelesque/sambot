@@ -55,6 +55,9 @@ class App extends React.Component{
     }})
     .then(res => {
       let newState = {conversation: this.state.conversation.concat({text: res.answer.text, from: "bot"}), prompt: res.answer.prompt}
+      if(res.answer.prompt){
+        console.log('Prompting for:', res.answer.prompt)
+      }
       if(res.context) newState.context = Object.assign({}, this.state.context, res.context)
       this.setState(newState, () => {
         this.refs.conversation.scrollTop = this.refs.conversation.scrollHeight
@@ -87,6 +90,9 @@ class App extends React.Component{
     )
   }
 }
+let apiURL = ''
+try{ if(location.hostname.match('localhost')) apiURL = 'http://localhost:6020' }
+catch(e){ console.warn('invalid location.hostname', e)}
 
 let reactRoot = document.getElementById('react-root')
-ReactDOM.render(<App apiURL="http://localhost:6020"/>, reactRoot)
+ReactDOM.render(<App apiURL={apiURL}/>, reactRoot)
