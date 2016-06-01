@@ -1,27 +1,19 @@
 var path = require('path'),
     webpack = require('webpack'),
-    directories = [path.resolve('./components')],
-    entrypoints = require('./entrypoints.js')
+    directories = [path.resolve('./components')]
 
 module.exports = {
   devtool: 'source-map',
-  entry: entrypoints,
+  entry: path.resolve('./components/sambot.jsx'),
   resolve: {
     root: directories,
     extensions: ['', '.js', '.es6 ', '.jsx'],
   },
   output: {
-    path: path.resolve('dist'),
-    filename: '[name]/[name].js',
-    publicPath: '/dist/',
-    // library: true,
-    // libraryTarget: 'commonjs2'
+    path: path.resolve('dist/sambot'),
+    filename: 'sambot.js',
+    publicPath: '/sambot/'
   },
-  // externals: {
-  //   'react': 'commonjs react',
-  //   'react-dom': 'commonjs react-dom',
-  //   'moment': 'commonjs moment',
-  // },
   plugins: [
     new webpack.optimize.OccurenceOrderPlugin(),
     new webpack.DefinePlugin({
